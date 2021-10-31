@@ -1,8 +1,11 @@
+<<<<<<< HEAD
 
 <?php
     header('Access-Control-Allow-Origin: *');
 ?>
 
+=======
+>>>>>>> 1916d8fdd5fdc6b3a1b7a0fdc18405cf869c223d
 <?php
 
 $superheroes = [
