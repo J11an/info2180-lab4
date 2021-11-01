@@ -1,11 +1,3 @@
-<<<<<<< HEAD
-
-<?php
-    header('Access-Control-Allow-Origin: *');
-?>
-
-=======
->>>>>>> 1916d8fdd5fdc6b3a1b7a0fdc18405cf869c223d
 <?php
 
 $superheroes = [
@@ -73,8 +65,23 @@ $superheroes = [
 
 ?>
 
-<ul>
-<?php foreach ($superheroes as $superhero): ?>
-  <li><?= $superhero['alias']; ?></li>
-<?php endforeach; ?>
-</ul>
+<?php
+    header('Access-Control-Allow-Origin: *');
+?>
+
+<?php
+  $query = $_REQUEST["query"];
+  $que = filter_var($query, FILTER_SANITIZE_STRING);
+  foreach ($superheroes as $superhero): ?>
+    <?php if ($que === $superhero["name"]): ?>
+      <?php $arr= implode(",", $superhero);?>
+      <?=$arr;?>
+    <?php endif; ?>
+    <?php if ($que === $superhero["alias"]): ?>
+      <?php $arr= implode(",", $superhero);?>
+      <?=$arr;?>
+    <?php endif; ?>
+    <?php if ($que === ""): ?>
+      <li><?= $superhero["alias"]; ?></li>
+    <?php endif; ?>
+  <?php endforeach; ?>
